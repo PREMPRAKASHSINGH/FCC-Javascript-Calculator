@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Freecodecamp JavaScript Calculator</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="./jquery-3.2.1.min.js"></script>
+	<style>
+		body{
+			font-family: helvetica;
+		  font-weight: bold;
+		  background: url('./image/cold.jpg');
+		  background-size: cover;
+		}
+		div{
+			//border: 1px solid black;
+		}
+		.container{
+			width: 500px;
+			height: 500px;
+			margin: 0px auto;
+		}
+		.head{
+			height: 100px;
+			width: 497px;
+			background-color: #73ADD7;
+			position: relative;
+		}
+		.btn-container{
+			height: 395px;
+		}
+		.row{
+			height: 79px;
+			margin-bottom: 4px;
+		}
+		div.btn{
+			display: inline-block;
+			height: 100%;
+			width: 121px;
+			font-size: 22px;
+			text-align: center;
+			vertical-align: middle;
+			line-height:79px;
+			background-color: white;
+			color: #A1CDE8;
+		}
+		.op{
+			position: absolute;
+			bottom: 20px;
+			right: 50px;
+			font-size: 30px;
+			color: white;
+		}
+		.calc{
+			position: absolute;
+			bottom: 5px;
+			right: 50px;
+			color: #CEE2EE;
+		}
+	</style>
+</head>
+<body>
+	<h1 style="text-align: center; color: #CEE2EE;">Freecodecamp JavaScript Calculator</h1>
+	<div class="container">
+		<div class="head">
+			<div class="op">2567</div>
+			<div class="calc">2567 + 23 - 23 x 1</div>
+		</div>
+		<div class="btn-container">
+			<div class="row">
+				<div class="btn">AC</div>
+				<div class="btn">CE</div>
+				<div class="btn">/</div>
+				<div class="btn">X</div>
+			</div>
+			<div class="row">
+				<div class="btn">7</div>
+				<div class="btn">8</div>
+				<div class="btn">9</div>
+				<div class="btn">-</div>
+			</div>
+			<div class="row">
+				<div class="btn">4</div>
+				<div class="btn">5</div>
+				<div class="btn">6</div>
+				<div class="btn">+</div>
+			</div>
+			<div class="row">
+				<div class="btn">1</div>
+				<div class="btn">2</div>
+				<div class="btn">3</div>
+				<div class="btn">=</div>
+			</div>
+			<div class="row">
+				<div class="btn">0</div>
+				<div class="btn">.</div>
+				<div class="btn"></div>
+				<div class="btn"></div>
+			</div>
+		</div>
+	</div>
+	<script>
+		
+	</script>
+</body>
+</html>
