@@ -16,39 +16,45 @@
 			//border: 1px solid black;
 		}
 		.container{
-			width: 500px;
-			height: 500px;
+			width: 350px;
+			height: 490px;
 			margin: 0px auto;
+			background-color: #765;
 		}
 		.head{
-			height: 100px;
-			width: 497px;
+			height: 90px;
+			width: 349px;
 			background-color: #73ADD7;
 			position: relative;
+			margin-bottom: 5px;
+			border-radius: 5px;
 		}
 		.btn-container{
 			height: 395px;
 		}
 		.row{
-			height: 79px;
-			margin-bottom: 4px;
+			height: 78px;
+			margin-bottom: 1px;
+			position: relative;
 		}
-		div.btn{
+		.btn{
 			display: inline-block;
 			height: 100%;
-			width: 121px;
+			width: 84px;
 			font-size: 22px;
 			text-align: center;
 			vertical-align: middle;
 			line-height:79px;
 			background-color: white;
+			border-radius: 5px;
 			color: #A1CDE8;
+			cursor: pointer;
 		}
 		.op{
 			position: absolute;
-			bottom: 20px;
+			bottom: 27px;
 			right: 50px;
-			font-size: 30px;
+			font-size: 40px;
 			color: white;
 		}
 		.calc{
@@ -68,39 +74,83 @@
 		</div>
 		<div class="btn-container">
 			<div class="row">
-				<div class="btn">AC</div>
-				<div class="btn">CE</div>
-				<div class="btn">/</div>
-				<div class="btn">X</div>
+				<button class="btn" value="AC">AC</button>
+				<button class="btn" value="CE">CE</button>
+				<button class="btn" value="/">/</button>
+				<button class="btn" value="*">X</button>
 			</div>
 			<div class="row">
-				<div class="btn">7</div>
-				<div class="btn">8</div>
-				<div class="btn">9</div>
-				<div class="btn">-</div>
+				<button class="btn" value="7">7</button>
+				<button class="btn" value="8">8</button>
+				<button class="btn" value="9">9</button>
+				<button class="btn" value="-">-</button>
 			</div>
 			<div class="row">
-				<div class="btn">4</div>
-				<div class="btn">5</div>
-				<div class="btn">6</div>
-				<div class="btn">+</div>
+				<button class="btn" value="4">4</button>
+				<button class="btn" value="5">5</button>
+				<button class="btn" value="6">6</button>
+				<button class="btn" value="+">+</button>
 			</div>
 			<div class="row">
-				<div class="btn">1</div>
-				<div class="btn">2</div>
-				<div class="btn">3</div>
-				<div class="btn">=</div>
+				<button class="btn" value="1">1</button>
+				<button class="btn" value="2">2</button>
+				<button class="btn" value="3">3</button>
+				<button class="btn" value="=" style="position: absolute; height: 156px; right: 2px; z-index: 1;">=</button>
 			</div>
 			<div class="row">
-				<div class="btn">0</div>
-				<div class="btn">.</div>
-				<div class="btn"></div>
-				<div class="btn"></div>
+				<button class="btn" value="0" style="width: 172px;">0</button>
+				<button class="btn" value="."><b>.</b></button>
 			</div>
 		</div>
 	</div>
 	<script>
-		
+		$(document).ready(function (){
+			$('.op').text(0);
+			$('.calc').text("");
+			$('.btn').on('click', function(){
+				var val = $(this).val();
+				if(val === 'AC'){
+					$('.op').text(0);
+					$('.calc').text("");
+				}else if(val === 'CE'){
+					var exp = $('.calc').text();
+					exp = exp.split('');
+					exp.pop();
+					exp = exp.join('');
+					if(exp.length<=1){
+						$('.op').text(0);
+						$('.calc').text("");
+					}else{
+						$('.calc').text(exp);
+					}
+				}else if(val === '='){
+					var exp = $('.calc').text();
+					var res = eval(exp);
+					res = Number.isInteger(res) ? res: res.toFixed(2);
+					$('.op').text(res);
+					$('.calc').text(res);
+				}else if($('.calc').text() === 'Digit Limit Met'){
+					$('.calc').text('');
+					$('.calc').append(val);
+					var exp = $('.calc').text();
+					var res = eval(exp);
+					res = Number.isInteger(res) ? res: res.toFixed(2);
+					$('.op').text(res);
+				}else{
+					if($('.op').text().length>8 || $('.calc').text().length>20){
+						alert("Input digit limit crossed.");
+						$('.op').text(0);
+						$('.calc').text('Digit Limit Met');
+					}else{
+						$('.calc').append(val);
+						var exp = $('.calc').text();
+						var res = eval(exp);
+						res = Number.isInteger(res) ? res: res.toFixed(2);
+						$('.op').text(res);
+					}
+				}
+			});
+		});
 	</script>
 </body>
 </html>
